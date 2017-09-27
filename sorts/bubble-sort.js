@@ -2,7 +2,7 @@
  * bubble sort algorithm in javascript
  */
 
-const defaultCompare = (a, b) => a - b;
+const defaultCompare = require('./default-compare');
 
 module.exports = (arr, compare) => {
   compare = compare || defaultCompare;
