@@ -41,6 +41,16 @@ describe('sort', () => {
       assert(arr.toString() === '9,8,7,6,5,4,3,2,1');
     });
   });
+  describe('#insertion-sort', () => {
+    it('array should be sorted ASC.', () => {
+      sort.heapSort(arr);
+      assert(arr.toString() === '1,2,3,4,5,6,7,8,9');
+    });
+    it('array should be sorted DESC.', () => {
+      sort.heapSort(arr, (a, b) => b - a);
+      assert(arr.toString() === '9,8,7,6,5,4,3,2,1');
+    });
+  });
 });
 
 // /** test bubble sort */
