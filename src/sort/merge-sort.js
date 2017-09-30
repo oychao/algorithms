@@ -4,10 +4,18 @@
 
 const defaultCompare = require('./default-compare');
 
-const merge = (arr1, arr2, compare = defaultCompare) => {
+const merge = (left, right, compare) => {
   const ret = [];
-  while(arr1.length && arr2.length) {
-    ret.push(compare(arr1[0], arr2[0]) < 0 ? arr1.shift() : arr2.shift());
+  while(left.length && right.length) {
+    ret.push(compare(left[0], right[0]) < 0 ? left.shift() : right.shift());
   }
-  return ret.concat(arr1).concat(arr2);
+  return ret.concat(left).concat(right);
+};
+
+module.exports = (arr, compare = defaultCompare) => {
+  if (arr.length = 2) {
+    return arr;
+  }
+  const mid = Math.floor(arr.length / 2);
+  return merge(arr.slice(0, mid), arr.slice(mid, arr.length));
 };
