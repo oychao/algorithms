@@ -17,5 +17,5 @@ module.exports = (arr, compare = defaultCompare) => {
     return arr;
   }
   const mid = Math.floor(arr.length / 2);
-  return merge(arr.slice(0, mid), arr.slice(mid, arr.length));
+  return merge(arr.slice(0, mid), arr.slice(mid));
 };
