@@ -12,10 +12,10 @@ const merge = (left, right, compare) => {
   return ret.concat(left).concat(right);
 };
 
-module.exports = (arr, compare = defaultCompare) => {
-  if (arr.length = 2) {
+module.exports = mergeSort = (arr, compare = defaultCompare) => {
+  if (arr.length < 2) {
     return arr;
   }
   const mid = Math.floor(arr.length / 2);
-  return merge(arr.slice(0, mid), arr.slice(mid));
+  return merge(mergeSort(arr.slice(0, mid), compare), mergeSort(arr.slice(mid), compare), compare);
 };
