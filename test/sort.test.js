@@ -1,5 +1,5 @@
 /**
- * test scripts
+ * test sort scripts
  */
 
 const assert = require('assert');

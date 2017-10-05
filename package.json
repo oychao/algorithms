@@ -7,7 +7,7 @@
   "author": "oychao <ch.k.ouyang@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "./node_modules/.bin/mocha --require intelli-espower-loader ./test/test.js"
+    "test": "./node_modules/.bin/mocha --require intelli-espower-loader"
   },
   "dependencies": {},
   "devDependencies": {
