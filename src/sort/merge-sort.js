@@ -2,7 +2,7 @@
  * merge sort algorithm
  */
 
-const defaultCompare = require('./default-compare');
+const defaultCompare = require('../basic/default-compare');
 
 const merge = (left, right, compare) => {
   const ret = [];

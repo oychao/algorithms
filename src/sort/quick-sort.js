@@ -2,7 +2,7 @@
  * quick sort
  */
 
-const defaultCompare = require('./default-compare');
+const defaultCompare = require('../basic/default-compare');
 
 const partition = (arr, from, to, compare) => {
   const pivotVal = arr[to];

@@ -2,7 +2,7 @@
  * heap sort algorithm
  */
 
-const defaultCompare = require('./default-compare');
+const defaultCompare = require('../basic/default-compare');
 
 const adjustHeap = (arr, index, compare, end = arr.length) => {
   const left = index * 2 + 1;

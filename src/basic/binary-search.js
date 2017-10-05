@@ -2,7 +2,9 @@
  * binary search
  */
 
-module.exports = (arr, target, compare = (a, b) => a - b) => {
+const defaultCompare = require('./default-compare');
+
+module.exports = (arr, target, compare = defaultCompare) => {
   let low = 0, high = arr.length - 1;
   while (low <= high) {
     let mid = Math.floor((low + high) / 2);
