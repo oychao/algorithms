@@ -4,10 +4,10 @@
   "description": "basic algorithms in JavaScript",
   "main": "index.js",
   "repository": "https://github.com/oychao/js-algorithms.git",
-  "author": "oychao <ch.k.ouyang@gmail.com>",
-  "license": "MIT",
+  "author": "oychao <chao@ouyang.io>",
+  "license": "WTFPL",
   "scripts": {
-    "test": "./node_modules/.bin/mocha --require intelli-espower-loader ./test/**/*.spec.js"
+    "test": "mocha --require intelli-espower-loader ./test/**/*.spec.js"
   },
   "dependencies": {},
   "devDependencies": {

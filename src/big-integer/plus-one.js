@@ -1,13 +1,7 @@
-const isLegalBigInteger = arr => {
-    for(let i = 0, length = arr.length; i < length; i++) {
-        if (typeof arr[i] !== 'number' || arr[i] < 0 || arr[i] > 9) {
-            throw new TypeError('illegal big integer');
-        }
-    }
-};
+const isLegalInteger = require('./is-legal-integer');
 
 module.exports = function(arr) {
-    isLegalBigInteger(arr);
+    isLegalInteger(arr);
     arr = arr.splice(0);
     let i, result;
     for(i = arr.length - 1; i >= 0; i--) {
