@@ -4,11 +4,11 @@
 
 const defaultCompare = require('../basic/default-compare');
 
-module.exports = (arr, compare) => {
-  compare = compare || defaultCompare;
-  for (let i = 0; i < arr.length; i++) {
-    for (let j = 0; j < arr.length - i - 1; j++) {
-      compare(arr[j], arr[j + 1]) > 0 ? [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]] : void 0;
+module.exports = (a, c = defaultCompare) => {
+  let i, j;
+  for (i = 0; i < a.length; i++) {
+    for (j = 0; j < a.length - i - 1; j++) {
+      c(a[j], a[j + 1]) > 0 ? [a[j], a[j + 1]] = [a[j + 1], a[j]] : void 0;
     }
   }
 };

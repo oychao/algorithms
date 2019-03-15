@@ -4,31 +4,33 @@
 
 const defaultCompare = require('../basic/default-compare');
 
-const adjustHeap = (arr, index, compare, end = arr.length) => {
-  const left = index * 2 + 1;
-  const right = index * 2 + 2;
-  if (left < end && compare(arr[left], arr[index]) > 0) {
-    [arr[index], arr[left]] = [arr[left], arr[index]];
-    adjustHeap(arr, index, compare, end);
-    adjustHeap(arr, left, compare, end);
-  } else if (right < end && compare(arr[right], arr[index]) > 0) {
-    [arr[index], arr[right]] = [arr[right], arr[index]];
-    adjustHeap(arr, index, compare, end);
-    adjustHeap(arr, right, compare, end);
+const adjustHeap = (a, i, c, end = a.length) => {
+  const l = i * 2 + 1;
+  const r = i * 2 + 2;
+  if (l < end && c(a[l], a[i]) > 0) {
+    [a[i], a[l]] = [a[l], a[i]];
+    adjustHeap(a, i, c, end);
+    adjustHeap(a, l, c, end);
+  } else if (r < end && c(a[r], a[i]) > 0) {
+    [a[i], a[r]] = [a[r], a[i]];
+    adjustHeap(a, i, c, end);
+    adjustHeap(a, r, c, end);
   }
 };
 
-const createHeap = (arr, compare) => {
-  const mid = Math.floor(arr.length / 2);
-  for (let i = mid; i >= 0; i--) {
-    adjustHeap(arr, i, compare);
+const createHeap = (a, c) => {
+  let i;
+  const mid = ~~(a.length / 2);
+  for (i = mid; i >= 0; i--) {
+    adjustHeap(a, i, c);
   }
 };
 
-module.exports = (arr, compare = defaultCompare) => {
-  createHeap(arr, compare);
-  for (let i = arr.length - 1; i > 0; i--) {
-    [arr[0], arr[i]] = [arr[i], arr[0]];
-    adjustHeap(arr, 0, compare, i);
+module.exports = (a, c = defaultCompare) => {
+  let i;
+  createHeap(a, c);
+  for (i = a.length - 1; i > 0; i--) {
+    [a[0], a[i]] = [a[i], a[0]];
+    adjustHeap(a, 0, c, i);
   }
 };
