@@ -4,46 +4,45 @@
 
 const defaultCompare = require('../basic/default-compare');
 
-const m = (a, l, mid, r, t, c) => {
-  let p1 = l,
-    p2 = mid,
-    len1 = mid,
-    len2 = r,
-    i = l;
-  while (p1 < len1 && p2 < len2) {
-    if (c(a[p1], a[p2]) < 0) {
-      t[i++] = a[p1++];
+const mg = (a, t, l, m, h, c) => {
+  let i = l,
+    j = m,
+    k = l;
+  while (i < m && j < h) {
+    if (c(a[i], a[j]) < 0) {
+      t[k++] = a[i++];
     } else {
-      t[i++] = a[p2++];
+      t[k++] = a[j++];
     }
   }
-  while (p1 < len1) {
-    t[i++] = a[p1++];
+  while (i < m) {
+    t[k++] = a[i++];
   }
-  while (p2 < len2) {
-    t[i++] = a[p2++];
+  while (j < h) {
+    t[k++] = a[j++];
   }
-  i = l;
-  while (i < r) {
-    a[i] = t[i];
-    i++;
+  k = l;
+  while (k < h) {
+    a[k] = t[k];
+    k++;
   }
 };
 
-const ms = (a, l, r, t, c) => {
-  if (r - l < 2) {
+const ms = (a, t, l, h, c) => {
+  if (h - l < 2) {
     t[l] = a[l];
     return;
   }
-  const mid = ~~((r + l) / 2);
-  ms(a, l, mid, t, c);
-  ms(a, mid, r, t, c)
-  m(a, l, mid, r, t, c);
+  const m = ~~((l + h) / 2);
+  ms(a, t, l, m, c);
+  ms(a, t, m, h, c);
+  mg(a, t, l, m, h, c);
 };
 
-
-module.exports = mergeSort = (a, c = defaultCompare) => {
+const mergeSort = (a, c = defaultCompare) => {
   const t = [];
-  ms(a, 0, a.length, t, c);
+  ms(a, t, 0, a.length, c);
   return a;
 };
+
+module.exports = mergeSort;
