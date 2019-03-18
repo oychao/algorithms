@@ -25,4 +25,9 @@ describe('string', () => {
       assert(strUtil.removeBlank(str) === 'thisisjustatest');
     });
   });
+  describe('#longest-substring', () => {
+    it('length of longest substring without repeating characters', () => {
+      assert(strUtil.calcLlswrc('thisisjustatest') === 5);
+    });
+  });
 });
