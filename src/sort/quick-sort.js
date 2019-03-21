@@ -4,38 +4,23 @@
 
 const defaultCompare = require('../basic/default-compare');
 
-const partition = (arr, from, to, compare) => {
-  const pivotVal = arr[to];
-  let pivot = from - 1;
-  for (var i = from; i < to; i++) {
-    compare(arr[i], pivotVal) < 0 ? [arr[i], arr[pivot]] = [arr[++pivot], arr[i]] : void 0;
-  }
-  [arr[pivot], arr[to]] = [arr[to], arr[++pivot]];
-  return pivot;
-};
-
-const quickSort = (arr, from, to, compare) => {
-  const index = partition2(arr, from, to, compare);
-  from < index - 1 ? quickSort(arr, from, index - 1, compare) : void 0;
-  index + 1 < to ? quickSort(arr, index + 1, to, compare) : void 0;
-};
-
-const partition2 = (arr, from, to, compare) => {
-  let i = from - 1, j = to + 1, pivotVal = arr[~~((from + to) / 2)];
+const prt = (a, l, h, c) => {
+  let i = l - 1, j = h + 1, pvtVal = a[~~((l + h) / 2)];
   while (true) {
-    do { i++; } while (compare(arr[i], pivotVal) < 0)
-    do { j--; } while (compare(arr[j], pivotVal) > 0)
+    do { i++; } while (c(a[i], pvtVal) < 0)
+    do { j--; } while (c(a[j], pvtVal) > 0)
     if (i >= j) { return j; }
-    [arr[i], arr[j]] = [arr[j], arr[i]];
+    [a[i], a[j]] = [a[j], a[i]];
   }
 };
 
-const quickSort2 = (arr, from, to, compare) => {
-  if (from < to) {
-    const pivot = partition2(arr, from, to, compare);
-    quickSort2(arr, from, pivot, compare);
-    quickSort2(arr, pivot + 1, to, compare);
+const qs = (a, l, h, c) => {
+  if (l < h) {
+    const pvt = prt(a, l, h, c);
+    qs(a, l, pvt, c);
+    qs(a, pvt + 1, h, c);
   }
+  return a;
 };
 
-module.exports = (arr, compare = defaultCompare) => quickSort2(arr, 0, arr.length - 1, compare);
+module.exports = (a, c = defaultCompare) => qs(a, 0, a.length - 1, c);
