@@ -69,7 +69,7 @@
  * @param {number} val
  * @return {number}
  */
-var removeElement = function(nums, val) {
+const removeElement = function(nums, val) {
   const ret = []
   let i, len, num;
   for (i = 0, len = nums.length; i < len; ++i) {
