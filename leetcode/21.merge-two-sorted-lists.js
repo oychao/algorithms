@@ -36,29 +36,25 @@
 var mergeTwoLists = function(l1, l2) {
   if (!l1) { return l2 }
   if (!l2) { return l1 }
-  const q = []
+  let pCur = { next: null }
+  const pHead = pCur
   let p1 = l1, p2 = l2
   while (p1 && p2) {
     if (p1.val < p2.val) {
-      q.push(p1)
+      pCur.next = p1
+      pCur = p1
       p1 = p1.next
     } else {
-      q.push(p2)
+      pCur.next = p2
+      pCur = p2
       p2 = p2.next
     }
   }
-  while (p1) {
-    q.push(p1)
-    p1 = p1.next
+  if (p1) {
+    pCur.next = p1
+  } else if (p2) {
+    pCur.next = p2
   }
-  while (p2) {
-    q.push(p2)
-    p2 = p2.next
-  }
-  let i, len;
-  for (i = 0, len = q.length - 1; i < len; ++i) {
-    q[i].next = q[i + 1]
-  }
-  return q[0]
+  return pHead.next
 };
 
