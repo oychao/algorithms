@@ -23,7 +23,6 @@ const addTwoNumbers = function(l1, l2) {
   let p0 = H, p1 = l1, p2 = l2
   let curVal
   while (p1 || p2) {
-    curVal = (p1 ? p1.val : 0) + (p2 ? p2.val : 0) + left
     p0.next = new ListNode(curVal % 10)
     p0 = p0.next
     p1 = p1 && p1.next
