@@ -1,3 +1,3 @@
-# Some JavaScript Algorithm
+# Some Algorithm Problem
 
-Some JavaScript Algorithm
+Some Algorithm Problem
